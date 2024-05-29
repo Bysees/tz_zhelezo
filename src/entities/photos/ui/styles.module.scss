@@ -1,0 +1,21 @@
+.photo {
+  &__item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #dbe9f9;
+    border-radius: 10px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
