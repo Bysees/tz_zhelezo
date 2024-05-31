@@ -1,7 +1,7 @@
 import { TPhoto } from 'shared/types'
 import { extractPages } from 'shared/utils'
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com'
+export const BASE_URL = 'https://jsonplaceholder.typicode.com'
 
 export type FetchPhotoListParams = {
   page: number
@@ -26,11 +26,11 @@ export const fetchPhotoList = async (params: FetchPhotoListParams): Promise<Phot
   })
 
   const photoList: TPhoto[] = await response.json()
-
+  
   const totalCount = +response?.headers.get('x-total-count')!
   const links = response?.headers.get('Link')?.split(',')!
   const { last, first, next, prev } = extractPages(links)
-
+  
   return {
     photoList,
     totalCount,

@@ -17,7 +17,10 @@ const FavoritePhotoButton = (props: FavoritePhotoButtonProps) => {
   const { checkIsFavorite, toggleFavoritePhoto } = usePhotosHandlers()
 
   return (
-    <button className={styles.button_fav} onClick={() => toggleFavoritePhoto(id)}>
+    <button
+      data-testid='favorite-photo-button'
+      className={styles.button_fav}
+      onClick={() => toggleFavoritePhoto(id)}>
       <FontAwesomeIcon
         icon={checkIsFavorite(id) ? faHeart : faHeartRegular}
         color='red'

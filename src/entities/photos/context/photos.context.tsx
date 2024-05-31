@@ -31,8 +31,12 @@ const PAGE = 1
 const PhotosContextHandlers = createContext({} as PhotosContextHandlersType)
 const PhotosContextValues = createContext({} as PhotosContextValuesType)
 
-export const PhotosContextProvider = ({ children }: PropsWithChildren) => {
-  const [photoList, setPhotoList] = useState<TPhoto[]>([])
+type PhotosContextProviderProps = PropsWithChildren & {
+  initialPhotoList?: TPhoto[]
+}
+
+export const PhotosContextProvider = ({ children, initialPhotoList }: PhotosContextProviderProps) => {
+  const [photoList, setPhotoList] = useState<TPhoto[]>(initialPhotoList ?? [])
   const [favoritePhotoIds, setFavoritePhotoIds] = useState<Set<TPhoto['id']>>(new Set())
   const [page, setPage] = useState(PAGE)
   const [lastPage, setLastPage] = useState(Infinity)
@@ -56,10 +60,7 @@ export const PhotosContextProvider = ({ children }: PropsWithChildren) => {
     })
   }, [])
 
-  const checkIsFavorite = useCallback(
-    (id: TPhoto['id']) => favoritePhotoIds.has(id),
-    [favoritePhotoIds]
-  )
+  const checkIsFavorite = useCallback((id: TPhoto['id']) => favoritePhotoIds.has(id), [favoritePhotoIds])
 
   const addPhotos = useCallback((newPhotos: TPhoto[]) => {
     setPhotoList((prevPhotos) => [...prevPhotos, ...newPhotos])

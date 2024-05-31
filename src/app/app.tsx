@@ -6,8 +6,10 @@ import { PhotosContextProvider } from 'entities/photos'
 import { router } from './router'
 import 'shared/styles/styles_clear.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const App = () => (
   <PhotosContextProvider>
     <RouterProvider router={router} />
   </PhotosContextProvider>
 )
+
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />)

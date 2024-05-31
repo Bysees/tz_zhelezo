@@ -1,1 +1,1 @@
-export { type FetchPhotoListParams, fetchPhotoList } from './api'
+export { type FetchPhotoListParams, fetchPhotoList, BASE_URL } from './api'

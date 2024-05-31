@@ -27,11 +27,10 @@ const PhotosPage = () => {
       setPage(page + 1)
       setLastPage(lastPage)
       addPhotos(photoList)
+      setStatus('success')
     } catch {
       setStatus('error')
     }
-
-    setStatus('success')
   }
 
   const onIntesect = (inView: boolean) => {
@@ -54,16 +53,18 @@ const PhotosPage = () => {
 
   return (
     <>
-      <PhotoList photoList={photoList} FavoriteButton={FavoritePhotoButton} />
+      <PhotoList
+        photoList={photoList}
+        FavoriteButton={FavoritePhotoButton}
+      />
 
       {status === 'loading' && <Loader center={page === 1} />}
 
-      {status === 'error' && (
-        <div>Произошла ошибка при загрузке фотографий, попробуйте позже...</div>
-      )}
+      {status === 'error' && <div>Произошла ошибка при загрузке фотографий, попробуйте позже...</div>}
 
       {status !== 'loading' && (
         <div
+          data-testid='intersect'
           className={styles.intersect}
           ref={intersectRef}
           aria-description='intersection element'
