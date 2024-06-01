@@ -1,1 +1,0 @@
-import{j as s,L as a,R as e}from"./index-A_xBCTec.js";const r="_wrapper_b7apy_1",l="_title_b7apy_8",i="_link_b7apy_13",t={wrapper:r,title:l,link:i},p=()=>s.jsxs("div",{className:t.wrapper,children:[s.jsx("h1",{className:t.title,children:"Что-то пошло не так..."}),s.jsx(a,{className:t.link,to:e.dashboard,children:"Вернуться на главную страницу"})]});export{p as default};
